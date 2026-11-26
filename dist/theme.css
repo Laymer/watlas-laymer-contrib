@@ -17,7 +17,7 @@
 #theme-toggle[aria-pressed="true"] {background: #d3c194; color: #1a2829}
 #theme-toggle:focus-visible {outline-color: #ffda89}
 #theme-toggle + .account {margin-left: 0}
-@media (max-width: 1500px) {
+@media (max-width: 400px) {
   #theme-toggle {width: 40px; padding: 0; margin-right: .35rem}
   #theme-toggle span {display: none}
 }
@@ -59,4 +59,108 @@ html[data-theme="dark"] .tile-survey {background-color: var(--surface); color: v
 html[data-theme="dark"] :focus-visible {outline-color: #ffda89}
 @media (max-width: 600px) {
   html[data-theme="dark"] .hero:before {background: linear-gradient(90deg, #121e1ef7, #152422df 56%, #15242280)}
+}
+
+html[data-theme="dark"] {
+  dialog::backdrop {
+    background: rgb(5 12 15 / 76%);
+  }
+
+  .tk-metrics,
+  .tk-panel,
+  .lib-brief {
+    background: var(--surface);
+  }
+
+  .tk-form input:not([type="checkbox"]),
+  .tk-form select,
+  .tk-form textarea,
+  .dec-grid input,
+  .dec-date input,
+  .lib-search {
+    background: var(--field);
+    border-color: var(--line);
+  }
+
+  .tk-form ::placeholder,
+  .lib-search ::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  .tk-primary,
+  .lib-filters button[aria-pressed="true"] {
+    color: var(--field);
+    background: var(--teal);
+  }
+
+  .lib-filters button:hover:not([aria-pressed="true"]),
+  .lib-empty button:hover,
+  .tk-secondary:hover {
+    background: var(--surface);
+    border-color: var(--teal);
+  }
+
+  .tk-activebar,
+  .tk-live,
+  .dec-result {
+    background: var(--surface);
+    border-color: var(--line);
+  }
+
+  .tk-activebar {
+    color: var(--teal);
+  }
+
+  .dec-result {
+    border-left-color: var(--teal);
+  }
+
+  .dec-result dl {
+    border-color: var(--line);
+  }
+
+  .tk-track {
+    background: var(--line);
+  }
+
+  .tk-error {
+    color: #ffaba3;
+  }
+}
+
+html[data-theme="dark"] :is(.route-card, .dg-card, .dg-gear, .dg-rules, .dg-plan, .dg-source-box) {
+  background-color: var(--surface);
+}
+html[data-theme="dark"] :is(.routes-level select, .route-fallback, .dg-search, .dg-status-row select, .dg-level) {
+  background-color: var(--field);
+}
+html[data-theme="dark"] :is(.routes-type-filter button[aria-pressed=true], .route-track) {
+  color: var(--field);
+  background-color: var(--teal);
+}
+html[data-theme="dark"] :is(.routes-type-filter button[aria-pressed=false], .routes-mylevel, .route-secondary):hover {
+  background-color: var(--surface);
+  border-color: var(--teal);
+}
+html[data-theme="dark"] :is(.route-card-art, .route-detail-hero) > span {
+  color: var(--ink);
+  background-color: var(--field);
+}
+html[data-theme="dark"] .route-art-chart {
+  background-color: var(--surface);
+  background-blend-mode: multiply;
+}
+html[data-theme="dark"] .route-art-chart::before {
+  background: repeating-linear-gradient(0deg, transparent 0 21px, #abc6ba26 21px 22px),
+              repeating-linear-gradient(90deg, transparent 0 21px, #abc6ba26 21px 22px);
+}
+html[data-theme="dark"] .route-insignia {
+  color: var(--gold);
+  background-color: var(--field);
+  border-color: var(--line);
+  outline-color: var(--line);
+}
+html[data-theme="dark"] .dg-quest-body {
+  border-color: var(--line);
 }

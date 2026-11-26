@@ -99,7 +99,7 @@ dialog::backdrop{background:#15242199;backdrop-filter:blur(2px)}.modal-head{disp
 .checkpoint-actions {display: flex; align-items: center; flex-wrap: wrap; gap: 1rem}
 .checkpoint .act {min-height: 44px; font-size: 1rem}
 .checkpoint-evidence {color: var(--muted)}
-@media (min-width: 851px) and (max-width: 1320px) {
+@media (min-width: 851px) and (max-width: 1500px) {
   .mast-inner {flex-wrap: wrap; gap: .5rem}
   #nav {order: 2; width: 100%; justify-content: space-between}
 }
