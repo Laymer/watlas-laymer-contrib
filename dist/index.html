@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#192e32">
+<meta name="description" content="Laymer Migii’s personal field atlas for Protection Warrior leveling in World of Warcraft: Forever. Plan routes, prepare dungeon quests and measure the trip to level 60.">
+<title>Overview · Warrior Atlas</title>
+<link rel="icon" href="assets/crest.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/warrior.webp">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tracker.css">
+<link rel="stylesheet" href="routes.css">
+<link rel="stylesheet" href="library.css">
+<link rel="stylesheet" href="dungeons.css">
+<link rel="stylesheet" href="decisions.css">
+<script defer src="routes.js"></script><script defer src="tracker.js"></script><script defer src="library.js"></script>
+<script defer src="dungeons.js"></script><script defer src="decisions.js"></script><script defer src="main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner">
+<a href="#overview" class="branding" aria-label="Warrior Atlas overview"><img src="assets/crest.svg" alt="" width="39" height="45"><span><strong>Warrior Atlas</strong><small>WORLD OF WARCRAFT: FOREVER</small></span></a>
+<nav id="nav" aria-label="Main navigation"></nav>
+<button class="account" id="account" aria-label="Open Laymer Migii’s character sheet" title="Character sheet"><span>LM</span><i data-icon="chevron-down"></i></button>
+</div></header>
+<main id="main" class="container" tabindex="-1">
+<div class="context-line"><div><i data-icon="compass"></i><a href="#overview">Field atlas</a><span class="crumb-div">/</span><span id="crumb">Overview</span></div><div class="context-date"><i data-icon="calendar"></i><time id="dateline"></time></div></div>
+<div id="view"></div>
+</main>
+<footer class="site-foot container"><span><img src="assets/crest.svg" alt=""> Warrior Atlas</span><button data-action="addon">Companion addon <i data-icon="download"></i></button><a href="#research">Research &amp; sources <i data-icon="arrow-up-right"></i></a></footer>
+<dialog id="dialog" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title"></h2><button type="button" id="close-modal" aria-label="Close dialog">×</button></div><div id="modal-content"></div></dialog>
+<p id="notice" role="status"></p>
+</body>
+</html>

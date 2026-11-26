@@ -1,0 +1,68 @@
+.dg-page { --dg-border:var(--line,#d4d5cb); --dg-ink:var(--ink,#263933); --dg-muted:var(--muted,#607069); --dg-green:var(--teal,#28695d); max-width:1200px; margin:0 auto 50px; color:var(--dg-ink); font:14px/1.55 var(--sans,Arial,sans-serif); }
+.dg-page *, .dg-page *::after, .dg-page *::before { box-sizing:border-box; }
+.dg-header { margin-bottom:24px; }
+.dg-page :is(h1,h2,h3,p) { margin:0; }
+.dg-page .dg-kicker,.dg-level,.dg-type,.dg-lvl-small,.dg-display-count,.dg-stage { font:600 10px/1.45 var(--mono,monospace); text-transform:uppercase; letter-spacing:.09em; }
+.dg-page .dg-kicker { color:var(--dg-green); margin:7px 0; }
+.dg-header h1,.dg-page h2 { font-family:var(--serif,Georgia,serif); font-weight:500; line-height:1.1; letter-spacing:-.035em; }
+.dg-header h1 { font-size:clamp(36px,4vw,54px); }
+.dg-header > p:last-child { font-size:15px;color:var(--dg-muted); margin-top:12px; max-width:720px; }
+.dg-controls,.dg-heading-row,.dg-subnav,.dg-card-top,.dg-card-bottom,.dg-status-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.dg-controls { border-bottom:1px solid var(--dg-border); padding-bottom:15px; margin:12px 0 18px; }
+.dg-search { min-height:41px; width:min(100%,330px); border:1px solid var(--dg-border); border-radius:5px; display:flex; align-items:center; gap:8px; padding:8px 12px; color:var(--dg-muted); background:#ffffff69; }
+.dg-search input { border:0; background:transparent; font:inherit; outline:0; width:100%; color:var(--dg-ink); }
+.dg-search:focus-within,.dg-page :is(a,summary,button,select):focus-visible { outline:2px solid var(--dg-green); outline-offset:3px; }
+.dg-display-count,.dg-type,.dg-card-bottom,.dg-note,.dg-source-box > p { color:var(--dg-muted); }
+.dg-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:14px; }
+.dg-card { display:flex; flex-direction:column; text-decoration:none; color:var(--dg-ink); padding:22px; border:1px solid var(--dg-border); border-radius:6px; background:var(--card,#fffdf7); transition:border-color .18s,transform .18s; }
+.dg-card:hover { border-color:var(--dg-green); transform:translateY(-2px); }
+.dg-card h2 { font-size:clamp(25px,2.6vw,32px); margin-top:19px; }
+.dg-card p { margin:10px 0 20px; color:var(--dg-muted); font-size:13px; }
+.dg-level { color:var(--dg-green); background:#eaf0e8; padding:3px 7px; border-radius:4px; }
+.dg-card-bottom { border-top:1px solid var(--dg-border); padding-top:10px; margin-top:auto; font-size:12px; }
+.dg-card-bottom > span:last-child { color:var(--dg-green); font-size:17px; }
+.dg-matched { color:var(--dg-green); font-size:12px; margin-bottom:12px; }
+.dg-rules,.dg-plan,.dg-source-box { background:rgba(45,98,79,.043); border:1px solid var(--dg-border); border-radius:7px; padding:clamp(17px,2vw,27px); }
+.dg-rules,.dg-source-box { margin-top:26px; }
+.dg-rules h2,.dg-plan h2,.dg-source-box h2 { font-size:25px; margin-bottom:10px; }
+.dg-rules p,.dg-plan p,.dg-plan ol,.dg-source-box p { font-size:13px; }
+.dg-links { display:flex; flex-wrap:wrap; gap:5px 13px; margin-top:12px; }
+.dg-page .dg-links a,.dg-back,.dg-reference,.dg-empty button { color:var(--dg-green,var(--teal,#28695d)); font-size:12px; font-weight:650; text-decoration:none; border:0; background:transparent; padding:0; cursor:pointer; }
+.dg-links a:hover,.dg-back:hover,.dg-reference:hover,.dg-empty button:hover { text-decoration:underline; }
+.dg-empty { padding:20px; }
+.dg-back { display:inline-block; margin-bottom:14px; }
+.dg-subnav { justify-content:flex-start; gap:14px; color:var(--dg-muted); font-size:12px; margin-bottom:16px; }
+.dg-plan { display:grid; grid-template-columns:1fr 1fr; gap:28px; border-top:3px solid var(--dg-green); }
+.dg-plan > div + div { border-left:1px solid var(--dg-border); padding-left:24px; }
+.dg-plan h3 { margin:14px 0 4px; font:650 14px var(--sans,Arial,sans-serif); }
+.dg-plan ol { margin:0; padding-left:18px; }
+.dg-plan li + li { margin-top:6px; }
+.dg-quest-section,.dg-gear-section { margin-top:35px; }
+.dg-heading-row h2 { font-size:clamp(27px,3vw,36px); }
+.dg-heading-row small { color:var(--dg-green); font-size:12px; }
+.dg-page .dg-note { margin:9px 0 16px; font-size:13px; }
+.dg-quest { border-top:1px solid var(--dg-border); }
+.dg-quest:last-child { border-bottom:1px solid var(--dg-border); }
+.dg-quest > summary { display:flex; align-items:center; gap:12px; padding:14px 3px; cursor:pointer; list-style:none; }
+.dg-quest > summary::-webkit-details-marker { display:none; }
+.dg-quest > summary strong { font-weight:650; }
+.dg-lvl-small { color:var(--dg-muted); flex:0 0 47px; }
+.dg-stage { color:var(--dg-green); margin-left:auto; }
+.dg-caret { font-size:15px; color:var(--dg-green); }
+.dg-quest[open] .dg-caret { transform:rotate(180deg); }
+.dg-quest-body { border-left:2px solid #c6d3c9; margin:0 0 18px 10px; padding:0 0 0 15px; }
+.dg-quest-body dl { margin:0; }
+.dg-quest-body dl > div { display:grid; grid-template-columns:100px 1fr; gap:9px; padding:4px 0; }
+.dg-quest-body dt { font-size:12px; font-weight:650; }
+.dg-quest-body dd { margin:0; font-size:13px; }
+.dg-status-row { justify-content:flex-start; padding:8px 0 0; }
+.dg-status-row label { font-weight:600; font-size:12px; }
+.dg-status-row select { display:inline-block; margin-left:7px; max-width:100%; background:var(--paper,#faf9f2); color:var(--dg-ink); border:1px solid var(--dg-border); border-radius:4px; padding:5px; font:inherit; }
+.dg-save { color:var(--dg-green); font-size:12px; }
+.dg-gear-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr)); gap:12px; }
+.dg-gear { padding:17px; border:1px solid var(--dg-border); border-radius:6px; }
+.dg-gear h3 { font-size:17px; }
+.dg-gear p { font-size:13px; }
+.dg-gear .dg-origin { font-size:12px; margin:4px 0 12px; color:var(--dg-muted); }
+.dg-source-box p { margin-top:13px; }
+@media (max-width:640px) { .dg-plan { grid-template-columns:1fr; gap:15px; } .dg-plan > div + div { border-left:0; border-top:1px solid var(--dg-border); padding:14px 0 0; } .dg-quest > summary { gap:7px; } .dg-quest-body dl > div { grid-template-columns:80px 1fr; } .dg-stage { max-width:62px; } .dg-card { padding:18px; } }

@@ -1,0 +1,27 @@
+.dec-panel{font:14px/1.5 var(--sans);color:var(--ink);padding:3px 0}
+.dec-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.dec-tabs button,.dec-tools button,.dec-options button{cursor:pointer;font:600 13px var(--sans);color:var(--teal);background:transparent;border:1px solid transparent;border-radius:3px;padding:7px 12px}
+.dec-tabs button[aria-pressed="true"]{color:var(--paper);background:var(--teal)}
+.dec-tabs button:hover,.dec-options button:hover,.dec-tools button:hover{border-color:var(--teal)}
+.dec-panel .dec-intro{font-family:var(--serif);font-size:20px;line-height:1.35;margin:15px 0;color:var(--ink)}
+.dec-tools{display:flex;align-items:center;justify-content:space-between;margin:12px 0;gap:8px}
+.dec-tools span,.dec-options h4{font:600 10px var(--mono);text-transform:uppercase;letter-spacing:.095em;color:var(--muted)}
+.dec-tools button,.dec-options button{border-color:var(--line);padding:5px 9px;font-size:12px}
+.dec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 15px}
+.dec-grid label,.dec-date{display:grid;align-content:start;gap:4px;min-width:0}
+.dec-panel label strong{font:600 12px/1.3 var(--sans);color:var(--ink)}
+.dec-grid label small,.dec-panel .dec-foot{font:12px/1.45 var(--sans);color:var(--muted)}
+.dec-grid input,.dec-date input{box-sizing:border-box;width:100%;background:#fffdf7;color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:8px 10px;font:14px var(--mono)}
+.dec-panel input:focus-visible,.dec-panel button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.dec-result{background:#edf0e7;border:1px solid #cbd3bf;padding:15px;margin-top:17px;border-left:3px solid var(--teal)}
+.dec-result h3{margin:0 0 5px;font:600 22px/1.15 var(--serif)}
+.dec-result p{margin:0;font:13px/1.55 var(--sans)}
+.dec-result dl{margin:12px 0 0;padding:9px 0 0;border-top:1px solid #cbd3bf;display:grid;gap:5px}
+.dec-result dl div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:12px}
+.dec-result dd{font:600 12px var(--mono);text-align:right;margin:0}
+.dec-foot{margin:9px 0}
+.dec-date{max-width:210px}
+.dec-options{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.dec-options h4{margin:0 0 6px}
+.dec-options button{margin:3px 4px 0 0}
+@media(max-width:480px){.dec-grid{gap:9px;grid-template-columns:1fr}.dec-result dl div{align-items:flex-start;flex-wrap:wrap;gap:3px}.dec-tabs button{font-size:12px;padding:6px 7px}.dec-grid input{font-size:16px}}

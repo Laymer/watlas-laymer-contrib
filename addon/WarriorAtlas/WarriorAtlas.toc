@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: Warrior Atlas
+## Notes: A private leveling journal and field advisor for World of Warcraft: Forever.
+## Author: Warrior Atlas
+## Version: 1.0.0
+## SavedVariablesPerCharacter: WarriorAtlasCharacterDB
+
+WarriorAtlas.lua
