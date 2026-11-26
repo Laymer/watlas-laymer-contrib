@@ -1,0 +1,3 @@
+Branch from current upstream main and submit one coherent outcome per pull request from your fork. Review the behavior, test evidence and rollout implications together. Count added plus deleted hand-edited lines against the first parent of each commit (150) and the merge-base-to-head patch (400). Only dist/assets/WarriorAtlas.zip is generated. Verify its entries against addon/WarriorAtlas. Other binary changes require review.
+
+If a change cannot reasonably be split, document its sizes, rationale, test evidence and reviewer in the PR. After review, a maintainer may push an annotated upstream tag named scope-exception/<full-head-SHA> pointing to that SHA with the PR and rationale as its message. Rerun the check. New commits require fresh review.
