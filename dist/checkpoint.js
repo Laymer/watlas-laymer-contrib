@@ -37,7 +37,7 @@
         <h1>${title}</h1><p class="checkpoint-target">${target}</p>
         <dl><dt>${route ? 'Start here' : 'First pull'}</dt><dd>${ready ? 'Go only with a ready healer and party. ' : ''}${pull}</dd>
         <dt>When to leave</dt><dd>Mark Done at level ${next}. ${route ? route.steps.at(-1)[1] : 'Switch to the fallback early if waiting for respawns or recovering from PvP costs you the circuit.'}</dd>
-        <dt>Nearby fallback</dt><dd>${fallback}</dd></dl>
+        <dt>${route ? 'Solo fallback' : 'Nearby fallback'}</dt><dd>${fallback}</dd></dl>
         <p class="checkpoint-evidence">${evidence}</p>
         <div class="checkpoint-actions"><button class="act primary" type="button" data-done>Done</button>${undoButton}
         <a href="#grinding">Grinding tips</a>${route ? `<button class="act" data-home-route="${route.id}">Route details</button>` : ''}</div>`;
