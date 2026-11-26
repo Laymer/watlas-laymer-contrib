@@ -33,7 +33,7 @@ const paths={
 };
 function icon(name,size=16){return `<svg class="ico" aria-hidden="true" viewBox="0 0 24 24" width="${Number(size)||16}" height="${Number(size)||16}" fill="none" stroke="currentColor" stroke-width="1.6">${paths[name]||paths.compass}</svg>`;}
 function icons(){document.querySelectorAll('i[data-icon]').forEach(el=>el.outerHTML=icon(el.dataset.icon,el.dataset.size||14));}
-const nav=[['overview','Overview','overview'],['routes','Route planner','map'],['dungeons','Dungeons','dungeon'],['journal','Session log','journal'],['research','Research','book']];
+const nav=[['overview','Overview','overview'],['routes','Route planner','map'],['dungeons','Dungeons','dungeon'],['journal','Session log','journal'],['research','Research','book'],['grinding','Grinding tips','swords']];
 const key='warrior-atlas:laymer:dashboard:v1';
 function read(){try{return JSON.parse(localStorage.getItem(key))||{};}catch{return {};}}
 function save(update){try{localStorage.setItem(key,JSON.stringify({...read(),...update}));return true;}catch{notice('Browser storage is unavailable.');return false;}}
@@ -105,6 +105,7 @@ function render(scroll=false){
  $('#nav').innerHTML=nav.map(([slug,t,g])=>`<a href="#${slug}" ${p===slug?'aria-current="page"':''}>${icon(g,15)}${t}</a>`).join('');
  if(p==='overview')dashboard();
  else if(p==='routes')Routes.render($('#view'));
+ else if(p==='grinding')Grinding.render($('#view'));
  else if(p==='journal')Tracker.render($('#view'));
  else if(p==='research')Library.render($('#view'));
  else if(p==='dungeons')Dungeons.render($('#view'),location.hash.slice(1).split('/')[1]);
