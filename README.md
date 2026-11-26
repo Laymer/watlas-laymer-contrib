@@ -29,3 +29,9 @@ See [the addon guide](addon/WarriorAtlas/README.txt) for the full command list, 
 The 05:00–06:00 morning comparison window uses Europe/Brussels. The research library and route guides retain their sources and distinguish measured XP rates from planning estimates.
 
 The four WebP illustrations, paper texture and crest are creator-supplied artwork. Inter is distributed with its [SIL Open Font License](dist/assets/inter-license.txt).
+
+## Published atlas
+
+[Open the checkpoint](https://mytikas-monster.github.io/watlas-laymer/) or [read Grinding tips](https://mytikas-monster.github.io/watlas-laymer/#grinding). Done advances your itinerary, and Undo restores the previous checkpoint. Character XP and completed sessions stay in the journal for the browser origin where you recorded them.
+
+The Pages workflow tests the project path at 320 CSS pixels and verifies the downloadable archive against the addon sources. Production uses the tested dist directory on main and the github-pages environment. To roll back, revert the affected change through a PR and let the same workflow verify and deploy the result.

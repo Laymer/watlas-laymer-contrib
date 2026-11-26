@@ -1,0 +1,50 @@
+name: Warrior Atlas Pages
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Check release files and addon archive
+        run: |
+          python ci/check_release.py
+          for file in dist/*.js; do node --check "$file"; done
+      - name: Verify the Pages project path in Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --no-audit --no-fund playwright@1.64.0
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium
+          mkdir "$RUNNER_TEMP/site"
+          ln -s "$PWD/dist" "$RUNNER_TEMP/site/watlas-laymer"
+          python -m http.server 8000 --bind 127.0.0.1 --directory "$RUNNER_TEMP/site" &
+          trap 'kill $!' EXIT
+          curl --retry 8 --retry-connrefused -fsS -o /dev/null http://127.0.0.1:8000/watlas-laymer/
+          NODE_PATH="$RUNNER_TEMP/browser/node_modules" node ci/browser.cjs http://127.0.0.1:8000/watlas-laymer/
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: dist
+  deploy:
+    if: github.repository == 'Mytikas-Monster/watlas-laymer' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    concurrency: production-pages
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    steps:
+      - id: publish
+        uses: actions/deploy-pages@v4
