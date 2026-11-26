@@ -33,7 +33,7 @@ const paths={
 };
 function icon(name,size=16){return `<svg class="ico" aria-hidden="true" viewBox="0 0 24 24" width="${Number(size)||16}" height="${Number(size)||16}" fill="none" stroke="currentColor" stroke-width="1.6">${paths[name]||paths.compass}</svg>`;}
 function icons(){document.querySelectorAll('i[data-icon]').forEach(el=>el.outerHTML=icon(el.dataset.icon,el.dataset.size||14));}
-const nav=[['overview','Overview','overview'],['routes','Route planner','map'],['dungeons','Dungeons','dungeon'],['journal','Session log','journal'],['research','Research','book'],['grinding','Grinding tips','swords']];
+const nav=[['checkpoint','Checkpoint','flag'],['overview','Overview','overview'],['routes','Route planner','map'],['dungeons','Dungeons','dungeon'],['journal','Session log','journal'],['research','Research','book'],['grinding','Grinding tips','swords']];
 const key='warrior-atlas:laymer:dashboard:v1';
 function read(){try{return JSON.parse(localStorage.getItem(key))||{};}catch{return {};}}
 function save(update){try{localStorage.setItem(key,JSON.stringify({...read(),...update}));return true;}catch{notice('Browser storage is unavailable.');return false;}}
@@ -51,7 +51,7 @@ function notice(text){const n=$('#notice');n.textContent=text;n.classList.add('s
 function modal(title,html){const d=$('#dialog');$('#modal-title').textContent=title;$('#modal-content').innerHTML=html;if(!d.open)d.showModal();d.scrollTop=0;}
 function closeModal(){const d=$('#dialog');if(d.open)d.close();}
 window.Atlas={icon,modal,closeModal,selectRoute,selectedRoute,getLevel:()=>Tracker.summary().level,notice};
-function page(){const p=location.hash.slice(1).split('/')[0];return nav.some(n=>n[0]===p)?p:'overview';}
+function page(){const p=location.hash.slice(1).split('/')[0];return nav.some(n=>n[0]===p)?p:'checkpoint';}
 function button(label,act,glyph,primary=false){return `<button class="act ${primary?'primary':''}" data-action="${act}">${icon(glyph,15)}${label}</button>`;}
 function link(label,href){return `<a class="link-button" href="${href}">${label}${icon('arrow-right',14)}</a>`;}
 function stat(glyph,heading,value,note){return `<div class="stat"><div class="stat-label">${icon(glyph,16)}${heading}</div><p class="stat-value">${value}</p><div class="stat-note">${note}</div></div>`;}
@@ -103,7 +103,8 @@ function render(scroll=false){
  const p=page(),title=nav.find(n=>n[0]===p)[1];
  document.title=title+' · Warrior Atlas';$('#crumb').textContent=title;
  $('#nav').innerHTML=nav.map(([slug,t,g])=>`<a href="#${slug}" ${p===slug?'aria-current="page"':''}>${icon(g,15)}${t}</a>`).join('');
- if(p==='overview')dashboard();
+ if(p==='checkpoint')Checkpoint.render($('#view'),read,save);
+ else if(p==='overview')dashboard();
  else if(p==='routes')Routes.render($('#view'));
  else if(p==='grinding')Grinding.render($('#view'));
  else if(p==='journal')Tracker.render($('#view'));

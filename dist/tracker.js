@@ -352,7 +352,7 @@
   // A comparison needs two morning samples per route and two eligible routes.
   // Prefer exact route titles. A zone alone identifies a route only if its activity
   // uniquely resolves it across the full route catalog.
-  function preferredRoute(routes) {
+  function preferredRoute(routes, benchmarkId) {
     const state=read(), level=state.profile.level;
     if (!Array.isArray(routes) || level>=60) return null;
     const normalize=text=>String(text || '').normalize('NFKC').replace(/[‘’]/g,"'").trim().replace(/\s+/g,' ').toLowerCase();
@@ -371,6 +371,7 @@
       g.count++;g.ms+=run.ms;g.gain+=run.gain;groups.set(candidate.id,g);
     }
     const ranked=Array.from(groups.values()).filter(g=>g.count>=2).sort((a,b)=>gainRate(b)-gainRate(a));
+    if (benchmarkId && !ranked.some(group => group.id === benchmarkId)) return null;
     if (ranked.length<2 || gainRate(ranked[0])<=gainRate(ranked[1])) return null;
     return {id:ranked[0].id,count:ranked[0].count,pace:gainRate(ranked[0]),compared:ranked.length};
   }
