@@ -72,3 +72,12 @@ dialog::backdrop{background:#15242199;backdrop-filter:blur(2px)}.modal-head{disp
 @media(prefers-reduced-motion:reduce){*,*::after,*::before{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 .measured-note{margin:12px 0 0;color:var(--teal);font-size:12px;line-height:1.5}
 .tile-survey{display:grid;place-items:center;color:#69745e;background-color:#e7e5d4;background-image:repeating-radial-gradient(ellipse at 25% 250%,transparent 0 9px,#b9b9a040 10px 11px,transparent 12px 18px)}.tile-survey svg{background:#f3efdf;border:1px solid #a9ab93;box-sizing:content-box;padding:9px;border-radius:50%}
+.field-guide {max-width: 44rem; margin: 1rem auto 3rem; font-size: 1rem; line-height: 1.6}
+.field-guide h2 {margin-top: 1.6em}
+.field-guide li {margin-block: .5em}
+:focus-visible {outline: 3px solid #287d95; outline-offset: 3px}
+@media(max-width: 850px) {
+  #nav {flex-wrap: wrap; justify-content: flex-start; column-gap: .8rem}
+  #nav a {font-size: .875rem; min-height: 32px}
+  .site-foot {flex-wrap: wrap; gap: .75rem}
+}
