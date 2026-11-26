@@ -1,0 +1,33 @@
+name: Review scope
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  scope:
+    name: granular-change
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Test size policy
+        run: python ci/test_granular.py
+      - name: Measure changes
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          policy="$RUNNER_TEMP/granular.py"
+          if git cat-file -e "$BASE:ci/granular.py"; then
+            git show "$BASE:ci/granular.py" > "$policy"
+          else
+            cp ci/granular.py "$policy"
+          fi
+          if ! python "$policy" "$BASE" "$HEAD"; then
+            tag="refs/tags/scope-exception/$HEAD"
+            test "$(git cat-file -t "$tag")" = tag
+            test "$(git rev-parse "$tag^{}")" = "$HEAD"
+            test -n "$(git for-each-ref --format='%(contents:subject)' "$tag")"
+            git for-each-ref --format='Approved exception: %(contents:subject)' "$tag"
+          fi
