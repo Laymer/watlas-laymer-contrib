@@ -1,11 +1,56 @@
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 
+async function verifyTheme(page, root) {
+  const toggle = page.getByRole('button', {name: 'Dark mode', exact: true});
+  async function expectTheme(theme) {
+    await page.waitForSelector('html[data-theme="' + theme + '"]', {timeout: 3000});
+    assert.equal(await toggle.getAttribute('aria-pressed'), String(theme === 'dark'));
+  }
+  const background = locator => locator.evaluate(node => getComputedStyle(node).backgroundColor);
+  const key = 'warrior-atlas:theme';
+  await page.emulateMedia({colorScheme: 'light'});
+  await page.goto(root);
+  await expectTheme('light');
+  const lightCard = await background(page.locator('.checkpoint'));
+  await page.emulateMedia({colorScheme: 'dark'});
+  await expectTheme('dark');
+  assert.notEqual(await background(page.locator('.checkpoint')), lightCard);
+
+  await toggle.focus();
+  await page.keyboard.press('Space');
+  await expectTheme('light');
+  assert.equal(await page.evaluate(key => localStorage.getItem(key), key), 'light');
+  await page.reload();
+  await expectTheme('light');
+  await page.emulateMedia({colorScheme: 'light'});
+  await page.emulateMedia({colorScheme: 'dark'});
+  await expectTheme('light');
+
+  await toggle.click();
+  await page.emulateMedia({colorScheme: 'light'});
+  await page.goto(root + '#grinding');
+  await page.reload();
+  await expectTheme('dark');
+  assert.equal(await page.locator('h1').innerText(), 'Grinding tips');
+  await page.getByRole('button', {name: 'Companion addon'}).click();
+  const dialog = page.getByRole('dialog');
+  const darkDialog = await background(dialog);
+  assert.equal(await dialog.evaluate(node => getComputedStyle(node).colorScheme), 'dark');
+  await page.keyboard.press('Escape');
+  await toggle.click();
+  await expectTheme('light');
+  await page.getByRole('button', {name: 'Companion addon'}).click();
+  assert.notEqual(await background(dialog), darkDialog);
+  await page.keyboard.press('Escape');
+  await page.evaluate(key => localStorage.removeItem(key), key);
+}
+
 async function verify(page, root) {
   const journal = 'warrior-atlas:laymer-migii:journal:v1';
   const view = page.locator('#view h1');
   await page.goto(root);
-  for (const width of [851, 1151, 1280, 1321, 320]) {
+  for (const width of [851, 1151, 1280, 1321, 1501, 320]) {
     await page.setViewportSize({width, height: 720});
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
   }
@@ -83,6 +128,7 @@ async function verify(page, root) {
     const errors = [];
     page.on('pageerror', error => errors.push(String(error)));
     page.on('response', response => {if (response.status() >= 400) errors.push(response.url());});
+    await verifyTheme(page, process.argv[2]);
     await verify(page, process.argv[2]);
     assert.deepEqual(errors, []);
   } finally {

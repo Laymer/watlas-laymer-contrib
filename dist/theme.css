@@ -1,0 +1,166 @@
+#theme-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  min-height: 40px;
+  flex: none;
+  padding: .4rem .7rem;
+  background: transparent;
+  color: #ece3c9;
+  border: 1px solid #91866c;
+  border-radius: 2rem;
+  font-size: .8125rem;
+}
+#theme-toggle:hover {border-color: #eddebb}
+#theme-toggle[aria-pressed="true"] {background: #d3c194; color: #1a2829}
+#theme-toggle:focus-visible {outline-color: #ffda89}
+#theme-toggle + .account {margin-left: 0}
+@media (max-width: 400px) {
+  #theme-toggle {width: 40px; padding: 0; margin-right: .35rem}
+  #theme-toggle span {display: none}
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #eae8da;
+  --muted: #b9c3b8;
+  --line: #4c5b55;
+  --paper: #202c2b;
+  --surface: #2a3936;
+  --card: var(--surface);
+  --field: #15201f;
+  --teal: #94d8bd;
+  --gold: #dbc389;
+  --dark: #152427;
+  background: var(--field);
+  accent-color: var(--teal);
+}
+html[data-theme="dark"] body {background: #172120}
+html[data-theme="dark"] :is(dialog, .modal-head, .skip-link, .brief, .stats, .route-tile, .journey-card, .quick-card) {
+  background: var(--paper);
+  border-color: var(--line);
+}
+html[data-theme="dark"] .hero:before {background: linear-gradient(90deg, #121e1ef7 0%, #162321ef 34%, #15242270 65%, transparent)}
+html[data-theme="dark"] :is(.hero h1, .hero-meta, .brief-item strong, .act) {color: var(--ink)}
+html[data-theme="dark"] :is(.context-line, .tile-text, .tile-foot, .stat-value small, .stat-label, .brief-count, .brief-item small, .milestone) {color: var(--muted)}
+html[data-theme="dark"] :is(.context-line .ico, .hero-meta svg, .stat-label svg, .section-title svg, .quick-card > svg, .brief h2 .ico, .tile-foot svg, .milestone.end b) {color: var(--gold)}
+html[data-theme="dark"] .route-flag {color: var(--teal)}
+html[data-theme="dark"] .route-flag.dungeon {color: #e8b897}
+html[data-theme="dark"] .route-flag.grinding {color: var(--gold)}
+html[data-theme="dark"] :is(.act, .modal-head button:hover, .tile-survey svg, .brief-item input) {background: var(--surface); border-color: var(--line)}
+html[data-theme="dark"] :is(.act:hover, .quick-card:hover, .route-tile:hover) {border-color: var(--teal)}
+html[data-theme="dark"] :is(.act.primary, .milestone.on b, .brief-item input:checked) {background: var(--teal); color: var(--field); border-color: var(--teal)}
+html[data-theme="dark"] .brief-item input:checked:before {color: var(--field)}
+html[data-theme="dark"] :is(.tile-foot, .brief-item, .milestone b) {border-color: var(--line)}
+html[data-theme="dark"] .journey-card .track {background: var(--line)}
+html[data-theme="dark"] .tile-survey {background-color: var(--surface); color: var(--gold)}
+html[data-theme="dark"] :focus-visible {outline-color: #ffda89}
+@media (max-width: 600px) {
+  html[data-theme="dark"] .hero:before {background: linear-gradient(90deg, #121e1ef7, #152422df 56%, #15242280)}
+}
+
+html[data-theme="dark"] {
+  dialog::backdrop {
+    background: rgb(5 12 15 / 76%);
+  }
+
+  .tk-metrics,
+  .tk-panel,
+  .lib-brief {
+    background: var(--surface);
+  }
+
+  .tk-form input:not([type="checkbox"]),
+  .tk-form select,
+  .tk-form textarea,
+  .dec-grid input,
+  .dec-date input,
+  .lib-search {
+    background: var(--field);
+    border-color: var(--line);
+  }
+
+  .tk-form ::placeholder,
+  .lib-search ::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  .tk-primary,
+  .lib-filters button[aria-pressed="true"] {
+    color: var(--field);
+    background: var(--teal);
+  }
+
+  .lib-filters button:hover:not([aria-pressed="true"]),
+  .lib-empty button:hover,
+  .tk-secondary:hover {
+    background: var(--surface);
+    border-color: var(--teal);
+  }
+
+  .tk-activebar,
+  .tk-live,
+  .dec-result {
+    background: var(--surface);
+    border-color: var(--line);
+  }
+
+  .tk-activebar {
+    color: var(--teal);
+  }
+
+  .dec-result {
+    border-left-color: var(--teal);
+  }
+
+  .dec-result dl {
+    border-color: var(--line);
+  }
+
+  .tk-track {
+    background: var(--line);
+  }
+
+  .tk-error {
+    color: #ffaba3;
+  }
+}
+
+html[data-theme="dark"] :is(.route-card, .dg-card, .dg-gear, .dg-rules, .dg-plan, .dg-source-box) {
+  background-color: var(--surface);
+}
+html[data-theme="dark"] :is(.routes-level select, .route-fallback, .dg-search, .dg-status-row select, .dg-level) {
+  background-color: var(--field);
+}
+html[data-theme="dark"] :is(.routes-type-filter button[aria-pressed=true], .route-track) {
+  color: var(--field);
+  background-color: var(--teal);
+}
+html[data-theme="dark"] :is(.routes-type-filter button[aria-pressed=false], .routes-mylevel, .route-secondary):hover {
+  background-color: var(--surface);
+  border-color: var(--teal);
+}
+html[data-theme="dark"] :is(.route-card-art, .route-detail-hero) > span {
+  color: var(--ink);
+  background-color: var(--field);
+}
+html[data-theme="dark"] .route-art-chart {
+  background-color: var(--surface);
+  background-blend-mode: multiply;
+}
+html[data-theme="dark"] .route-art-chart::before {
+  background: repeating-linear-gradient(0deg, transparent 0 21px, #abc6ba26 21px 22px),
+              repeating-linear-gradient(90deg, transparent 0 21px, #abc6ba26 21px 22px);
+}
+html[data-theme="dark"] .route-insignia {
+  color: var(--gold);
+  background-color: var(--field);
+  border-color: var(--line);
+  outline-color: var(--line);
+}
+html[data-theme="dark"] .dg-quest-body {
+  border-color: var(--line);
+}
