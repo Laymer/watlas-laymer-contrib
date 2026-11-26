@@ -5,6 +5,10 @@ async function verify(page, root) {
   const journal = 'warrior-atlas:laymer-migii:journal:v1';
   const view = page.locator('#view h1');
   await page.goto(root);
+  for (const width of [851, 1151, 1280, 1321, 320]) {
+    await page.setViewportSize({width, height: 720});
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
+  }
   assert.equal(await view.innerText(), 'Dunemaul Compound');
   await page.getByRole('button', {name: 'Done', exact: true}).focus();
   await page.keyboard.press('Enter');
