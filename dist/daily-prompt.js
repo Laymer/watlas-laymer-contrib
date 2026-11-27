@@ -34,7 +34,7 @@
     return lines.join('\n\n');
   }
 
-  function render(host, date) {
+  function render(host, date, refreshDate) {
     host.innerHTML = `<article class="checkpoint daily-prompt"><h1>Daily Prompt</h1>
       <p><time></time> · 05:00–06:00 Brussels</p>
       <label for="login-note">Optional login note</label>
@@ -43,7 +43,7 @@
       <button class="act primary" type="button">Copy prompt</button></article>`;
     const note = host.querySelector('#login-note'), output = host.querySelector('#prompt-text');
     function refresh() {
-      const day = date();
+      const day = refreshDate();
       if (noteDay !== day) { noteDay = day; loginNote = ''; }
       const time = host.querySelector('time');
       time.dateTime = day;

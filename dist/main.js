@@ -104,7 +104,7 @@ function render(scroll=false){
  document.title=title+' · Warrior Atlas';$('#crumb').textContent=title;
  $('#nav').innerHTML=nav.map(([slug,t,g])=>`<a href="#${slug}" ${p===slug?'aria-current="page"':''}>${icon(g,15)}${t}</a>`).join('');
  if(p==='checkpoint')Checkpoint.render($('#view'),read,save);
- else if(p==='daily-prompt')DailyPrompt.render($('#view'),today);
+ else if(p==='daily-prompt')DailyPrompt.render($('#view'),today,refreshDate);
  else if(p==='overview')dashboard();
  else if(p==='routes')Routes.render($('#view'));
  else if(p==='grinding')Grinding.render($('#view'));
@@ -118,7 +118,14 @@ $('#dialog').addEventListener('click',e=>{if(e.target===e.currentTarget){const b
 document.addEventListener('click',e=>{const a=e.target.closest('[data-action]'),r=e.target.closest('[data-home-route]');if(a)action(a.dataset.action);else if(r)Routes.detail(r.dataset.homeRoute);});
 window.addEventListener('hashchange',()=>{closeModal();render(true);});
 window.addEventListener('atlas-update',()=>render());window.addEventListener('storage',()=>{if(!$('#dialog').open)render();});
-function refreshDate(){const d=new Date();$('#dateline').dateTime=today();$('#dateline').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Brussels',weekday:'short',day:'2-digit',month:'short',year:'numeric'}).format(d);}
+function refreshDate(){
+ const d=new Date(), dateline=$('#dateline'), day=today(d);
+ if(dateline.dateTime!==day){
+  dateline.dateTime=day;
+  dateline.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Brussels',weekday:'short',day:'2-digit',month:'short',year:'numeric'}).format(d);
+ }
+ return day;
+}
 window.addEventListener('focus',refreshDate);
 refreshDate();icons();render();
 })();

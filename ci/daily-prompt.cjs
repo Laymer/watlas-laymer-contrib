@@ -27,6 +27,7 @@ module.exports = async function verifyDailyPrompt(page, root) {
   assert.equal(await page.evaluate(() => navigator.clipboard.readText()), await output.inputValue());
   assert.match(await output.inputValue(), /2026-03-29/);
   assert.equal(await note.inputValue(), '');
+  assert.equal(await page.locator('#dateline').getAttribute('datetime'), '2026-03-29');
 
   const summer = Date.parse('2026-03-29T03:00:00Z');
   const winter = Date.parse('2026-10-25T04:00:00Z');
