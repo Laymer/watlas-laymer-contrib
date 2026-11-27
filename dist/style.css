@@ -103,3 +103,9 @@ dialog::backdrop{background:#15242199;backdrop-filter:blur(2px)}.modal-head{disp
   .mast-inner {flex-wrap: wrap; gap: .5rem}
   #nav {order: 2; width: 100%; justify-content: space-between}
 }
+.daily-prompt label {display: block; font-weight: 600}
+.daily-prompt textarea {
+  display: block; width: 100%; margin: .4rem 0 1rem; padding: .65rem;
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); resize: vertical;
+}
