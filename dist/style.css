@@ -109,3 +109,7 @@ dialog::backdrop{background:#15242199;backdrop-filter:blur(2px)}.modal-head{disp
   font: inherit; color: var(--ink); background: var(--paper);
   border: 1px solid var(--line); resize: vertical;
 }
+@media (min-width: 1501px) {
+  #nav {gap: .65rem}
+  .mast-inner {gap: 1rem}
+}
